@@ -1,12 +1,7 @@
-#include <iostream>
-#include <vector>
-#include <cmath>
+//imgproc.cpp
+#include "imgproc.h"
 
-using namespace std;
 
-// 定义图像大小
-const int IMAGE_WIDTH = 10;
-const int IMAGE_HEIGHT = 10;
 
 // 定义Canny边缘检测函数
 vector<vector<int>> cannyEdgeDetection(const vector<vector<int>>& image) {
@@ -86,27 +81,3 @@ vector<pair<double, double>> houghTransform(const vector<vector<int>>& edgeMap) 
 }
 
 
-int main() {
-    // 生成随机图像作为示例
-    vector<vector<int>> image(IMAGE_HEIGHT, vector<int>(IMAGE_WIDTH, 0));
-    for (int y = 0; y < IMAGE_HEIGHT; ++y) {
-        for (int x = 0; x < IMAGE_WIDTH; ++x) {
-            if (rand() % 2 == 0) {
-                image[y][x] = 255;
-            }
-        }
-    }
-
-    // 进行Canny边缘检测
-    vector<vector<int>> edgeMap = cannyEdgeDetection(image);
-
-    // 进行霍夫变换提取边缘直线
-    vector<pair<double, double>> lines = houghTransform(edgeMap);
-
-    // 输出直线参数
-    for (const auto& line : lines) {
-        cout << "Line parameters: (" << line.first << ", " << line.second << ")" << endl;
-    }
-
-    return 0;
-}
