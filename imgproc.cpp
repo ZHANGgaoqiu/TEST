@@ -1,10 +1,10 @@
 //imgproc.cpp
 #include "imgproc.h"
 
-
+using namespace std;
 
 // 定义Canny边缘检测函数
-vector<vector<int>> cannyEdgeDetection(const vector<vector<int>>& image) {
+vector<vector<int>> cannyEdgeDetection(const vector<vector<int>>& image, int IMAGE_WIDTH, int IMAGE_HEIGHT) {
     // 声明Sobel算子
     vector<vector<int>> sobelX = {{-1, 0, 1}, {-2, 0, 2}, {-1, 0, 1}};
     vector<vector<int>> sobelY = {{1, 2, 1}, {0, 0, 0}, {-1, -2, -1}};
@@ -40,7 +40,7 @@ vector<vector<int>> cannyEdgeDetection(const vector<vector<int>>& image) {
 }
 
 // 定义霍夫变换提取边缘直线函数
-vector<pair<double, double>> houghTransform(const vector<vector<int>>& edgeMap) {
+vector<pair<double, double>> houghTransform(const vector<vector<int>>& edgeMap, int IMAGE_WIDTH, int IMAGE_HEIGHT) {
     vector<pair<double, double>> lines;
 
     // 定义霍夫空间的参数范围
